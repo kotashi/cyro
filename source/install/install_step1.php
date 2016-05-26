@@ -1,10 +1,13 @@
 <?php
 // NO HTML CONTENT
 
-include_once("./includes/db_config.php");
-include_once("./includes/db_connect.php");
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
 
-$sql_members = "CREATE TABLE `".$DBNAME."`.`clients` (
+include_once("../includes/db_config.php");
+include_once("../includes/db_connect.php");
+
+$sql_members = "CREATE TABLE `".$DB_NAME."`.`clients` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(50) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
@@ -24,7 +27,7 @@ $sql_members = "CREATE TABLE `".$DBNAME."`.`clients` (
 	`active` VARCHAR(10) NOT NULL
 ) ENGINE = InnoDB;";
 
-$sql_admins = "CREATE TABLE `".$DBNAME."`.`admins` (
+$sql_admins = "CREATE TABLE `".$DB_NAME."`.`admins` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(50) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
@@ -32,12 +35,12 @@ $sql_admins = "CREATE TABLE `".$DBNAME."`.`admins` (
 	`active` VARCHAR(10) NOT NULL
 ) ENGINE = InnoDB;";
 
-$sql_la = "CREATE TABLE `".$DBNAME."`.`login_attempts` (
+$sql_la = "CREATE TABLE `".$DB_NAME."`.`login_attempts` (
     `user_id` INT(11) NOT NULL,
     `time` VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB";
 
-$sql_services = "CREATE TABLE `".$DBNAME."`.`services` (
+$sql_services = "CREATE TABLE `".$DB_NAME."`.`services` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`owner_email` VARCHAR(100) NOT NULL,
 	`package` VARCHAR(50) NOT NULL,
