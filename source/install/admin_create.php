@@ -1,6 +1,9 @@
 <?php
-include_once './includes/db_connect.php';
-include_once './includes/db_config.php';
+include_once '../includes/db_connect.php';
+include_once '../includes/db_config.php';
+ 
+ error_reporting(-1);
+ini_set('display_errors', 'On');
  
 $error_msg = "";
  

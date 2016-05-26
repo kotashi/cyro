@@ -3,8 +3,8 @@
 include_once("admin_create.php");
 include_once("../includes/functions.php");
 
-//error_reporting(-1);
-//ini_set('display_errors', 'On');
+error_reporting(-1);
+ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -18,6 +18,8 @@ include_once("../includes/functions.php");
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="css/install.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
+	<script src="js/forms.js"></script>
+	<script src="js/sha512.js"></script>
   </head>
 
   <body>
