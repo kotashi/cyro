@@ -6,40 +6,6 @@ include_once("./includes/db_connect.php");
 // Intsall variables.
 $connected = false; // false by default.
 
-$sql_members = "CREATE TABLE `".$DBNAME."`.`clients` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `username` VARCHAR(50) NOT NULL,
-    `email` VARCHAR(100) NOT NULL,
-    `password` CHAR(128) NOT NULL,
-	`firstname` VARCHAR(50) NOT NULL,
-	`lastname` VARCHAR(50) NOT NULL,
-	`company` VARCHAR(100) NOT NULL,
-	`address1` VARCHAR(100) NOT NULL,
-	`address2` VARCHAR(100) NOT NULL,
-	`city` VARCHAR(50) NOT NULL,
-	`state` VARCHAR(50) NOT NULL,
-	`postcode` VARCHAR(10) NOT NULL,
-	`homenumber` VARCHAR(20) NOT NULL,
-	`mobilenumber` VARCHAR(20) NOT NULL,
-	`defaultpayment` VARCHAR(100) NOT NULL,
-	`credit` VARCHAR(10) NOT NULL,
-	`active` VARCHAR(10) NOT NULL
-) ENGINE = InnoDB;";
-
-$sql_la = "CREATE TABLE `".$DBNAME."`.`login_attempts` (
-    `user_id` INT(11) NOT NULL,
-    `time` VARCHAR(30) NOT NULL
-) ENGINE=InnoDB";
-
-$sql_services = "CREATE TABLE `".$DBNAME."`.`services` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`owner_email` VARCHAR(100) NOT NULL,
-	`package` VARCHAR(50) NOT NULL,
-	`cost` VARCHAR(10) NOT NULL,
-	`billingcycle` VARCHAR(25) NOT NULL,
-	`status` VARCHAR(15) NOT NULL
-) ENGINE = InnoDB;";
-
 // check that I can connect to the database.
 if ($mysqli>connect_error) {
     $connected = false;
@@ -76,7 +42,9 @@ if ($mysqli>connect_error) {
 		
 		<p style="color:green;">Connected to database successfully!</p>
 		
+		<p>Press the button below to begin installing Kotashi Cyro.</p>
 		
+		<a href="install_step1.php" class="btn btn-primary">Install Cyro</a>
 		';
 	  }
 	  else
@@ -106,7 +74,7 @@ if ($mysqli>connect_error) {
 
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">Kotashi Cyro - <a href="http://github.com/kotashi/cyro">http://github.com/kotashi/cyro</a></p>
       </div>
     </footer>
     <script src="js/ie10-viewport-bug-workaround.js"></script>
