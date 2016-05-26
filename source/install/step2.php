@@ -1,17 +1,10 @@
 <?php
 // Cyro install script :)
 include_once("admin_create.php");
-include_once("./includes/functions.php");
+include_once("../includes/functions.php");
 
-// Intsall variables.
-$connected = false; // false by default.
-
-// check that I can connect to the database.
-if ($mysqli>connect_error) {
-    $connected = false;
-} else {
-	$connected = true;
-}
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
