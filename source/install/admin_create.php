@@ -15,12 +15,14 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Not a valid email
+		die(header('Location: failed.php?err=create'));
     }
  
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // The hashed pwd should be 128 characters long.
         // If it's not, something really odd has happened
+		die(header('Location: failed.php?err=create'));
     }
  
     // Username validity and password validity have been checked client side.
@@ -38,11 +40,12 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $stmt->store_result();
  
         if ($stmt->num_rows == 1) {
-            // A user with this email address already exists
+            die(header('Location: failed.php?err=create'));
                         $stmt->close();
         }
     } else {
-                $stmt->close();
+                die(header('Location: failed.php?err=create'));
+				$stmt->close();
     }
  
     // check existing username
@@ -56,9 +59,11 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
  
                 if ($stmt->num_rows == 1) {
                         // A user with this username already exists
+						die(header('Location: failed.php?err=create'));
                         $stmt->close();
                 }
         } else {
+				die(header('Location: failed.php?err=create'));
                 $stmt->close();
         }
  
@@ -79,7 +84,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
             $insert_stmt->bind_param('sss', $username, $email, $password);
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {
-                header('Location: failed.php?err=create');
+                die(header('Location: failed.php?err=create'));
             }
         }
         header('Location: done.php?usr='.$username);

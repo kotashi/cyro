@@ -9,25 +9,14 @@ if ($mysqli>connect_error) {
 	$connected = true; // continue
 }
 
-$sql_circle1 = "SELECT username, credit FROM clients WHERE username='".getUser($mysqli)."'";
-
-function c_getWallet()
+function s_listServices()
 {
-	return "9.44";
-}
-
-function c_getServices()
-{
-	return "3";
-}
-
-function c_getTickets() 
-{
-	return "5";
-}
-
-function c_getLogged() 
-{
-	return "125";
+	echo '<tr>';
+	echo '<td>123</td>';
+	echo '<td>Kotashi Basic</td>';
+	echo '<td>Tomorrow</td>';
+	echo '<td>£2.75</td>';
+	echo '<td><a href="view_service.php" class="btn btn-default">View</a></td>';
+	echo '</tr>';
 }
 ?>

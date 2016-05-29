@@ -1,9 +1,11 @@
 <?php
+///error_reporting(-1);
+///ini_set('display_errors', 'On');
 
-//error_reporting(-1);
-//ini_set('display_errors', 'On');
-
-include_once('includes/functions.php');
+include('includes/functions.php');
+include('includes/circle_functions.php');
+include('includes/service_functions.php');
+include('includes/cyro.log.php');
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -19,8 +21,10 @@ include_once('includes/functions.php');
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
+	<link href="css/install.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
-	<?php include('js/circles.php');?>
+	
+	
   </head>
 
   <body>
@@ -73,6 +77,8 @@ include_once('includes/functions.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Welcome back, <?php echo getUser($mysqli);?>!</h1>
 
+		 
+		  
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
 				<canvas id="circle1" width="201" height="201"></canvas> 
@@ -105,130 +111,23 @@ include_once('includes/functions.php');
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
+				<?php echo s_listServices();?>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-    </div>
+     <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Kotashi Cyro - <a href="http://github.com/kotashi/cyro">http://github.com/kotashi/cyro</a></p>
+      </div>
+    </footer>
+	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
-	<script src="js/circles.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -236,5 +135,47 @@ include_once('includes/functions.php');
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
   
+	 <!-- My fancy circle script! Lovely example used from W3 schools :3 -->
+			<script>
+				var c1 = document.getElementById("circle1");
+				var ctx1 = c1.getContext("2d");
+				ctx1.beginPath();
+				ctx1.arc(101,100,99,0,2*Math.PI);
+				ctx1.textAlign="center"; 
+				ctx1.textBaseline="middle";
+				ctx1.font="30px Verdana";
+				ctx1.fillText("<?php echo '£' . c_getWallet();?>",101,100);
+				ctx1.stroke();
+				
+				var c2 = document.getElementById("circle2");
+				var ctx2 = c2.getContext("2d");
+				ctx2.beginPath();
+				ctx2.arc(101,100,99,0,2*Math.PI);
+				ctx2.textAlign="center";
+				ctx2.textBaseline="middle";
+				ctx2.font="30px Verdana";				
+				ctx2.fillText("<?php echo c_getServices();?>",101,100);
+				ctx2.stroke();
+				
+				var c3 = document.getElementById("circle3");
+				var ctx3 = c3.getContext("2d");
+				ctx3.beginPath();
+				ctx3.arc(101,100,99,0,2*Math.PI);
+				ctx3.textAlign="center"; 
+				ctx3.textBaseline="middle";
+				ctx3.font="30px Verdana";
+				ctx3.fillText("<?php echo c_getTickets();?>",101,100);
+				ctx3.stroke();
+				
+				var c4 = document.getElementById("circle4");
+				var ctx4 = c4.getContext("2d");
+				ctx4.beginPath();
+				ctx4.arc(101,100,99,0,2*Math.PI);
+				ctx4.textAlign="center"; 
+				ctx4.textBaseline="middle";
+				ctx4.font="30px Verdana";
+				ctx4.fillText("<?php echo c_getLogged();?>",101,100);
+				ctx4.stroke();
+			</script>
 
 </body></html>
