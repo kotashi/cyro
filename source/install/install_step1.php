@@ -59,15 +59,15 @@ if ($mysqli->query($sql_members) === TRUE) {
 							// Admin tables installed.
 								header("Location: step2.php");
 						} else {
-							die("Location: failed.php?err=ad");
+							die(header("Location: failed.php?err=ad"));
 						}
 				} else {
-					die("Location: failed.php?err=la");
+					die(header("Location: failed.php?err=la"));
 				}
 		} else {
-			die("Location: failed.php?err=srv");
+			die(header("Location: failed.php?err=srv"));
 		}
 } else {
-     die("Location: failed.php?err=mem");
+     die(header("Location: failed.php?err=mem"));
 }
 ?>

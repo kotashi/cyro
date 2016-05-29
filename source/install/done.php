@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="./images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico">
     <title>Install Kotashi Cyro</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -21,13 +21,13 @@
 	  <ul>
 	  <li>Admin Username: <?php echo $_GET['usr'];?></li>
 	  <li>Admin Password: <i>You just set it!</i></li>
-	  <li>Client URL: <?php echo 'http://'.$_SERVER[HTTP_HOST].'/index.php'?></li>
-	  <li>Admin URL: <?php echo 'http://'.$_SERVER[HTTP_HOST].'/admin/index.php'?></li>
+	  <li>Client Area: <a href="../index.php">Here</a>.</li>
+	  <li>Admin Area: <a href="../admin/index.php">Here</a>.</li>
 	  </ul>
 	  
-	  <p>I hope it was quick and easy to install Kotashi Cyro!</p>
+	  <p>I hope it was quick and easy to install Kotashi Cyro! If you had any issues, please let me know!</p>
 	  
-	  <a href="./admin" class="btn btn-default">Go to Admin</a>
+	  <a href="../admin" class="btn btn-default">Go to Admin</a>
 	  
     </div>
 
