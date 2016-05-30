@@ -6,6 +6,11 @@ include('includes/functions.php');
 include('includes/circle_functions.php');
 include('includes/service_functions.php');
 include('includes/cyro.log.php');
+
+if (file_exists("install"))
+{
+	die("Please install Kotashi Cyro and delete the install directory first!");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -23,12 +28,10 @@ include('includes/cyro.log.php');
     <link href="css/dashboard.css" rel="stylesheet">
 	<link href="css/install.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
-	
-	
   </head>
 
   <body>
-
+	<?php if(login_check($mysqli) == true) : ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -123,6 +126,10 @@ include('includes/cyro.log.php');
       </div>
     </footer>
 	</div>
+	
+	<?php else : ?>
+	<?php header("Location: login.php");?>
+    <?php endif; ?>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

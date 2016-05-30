@@ -20,9 +20,9 @@ $sql_members = "CREATE TABLE `".DB_NAME."`.`clients` (
 	`city` VARCHAR(50) NOT NULL,
 	`state` VARCHAR(50) NOT NULL,
 	`postcode` VARCHAR(10) NOT NULL,
+	`country` VARCHAR(50) NOT NULL,
 	`homenumber` VARCHAR(20) NOT NULL,
 	`mobilenumber` VARCHAR(20) NOT NULL,
-	`defaultpayment` VARCHAR(100) NOT NULL,
 	`credit` VARCHAR(10) NOT NULL,
 	`active` VARCHAR(10) NOT NULL
 ) ENGINE = InnoDB;";

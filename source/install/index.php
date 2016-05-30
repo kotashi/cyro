@@ -1,13 +1,17 @@
 <?php
 // Cyro install script :)
-include_once("./includes/db_config.php");
-include_once("./includes/db_connect.php");
+include_once("../includes/db_config.php");
+include_once("../includes/db_connect.php");
 
 // Intsall variables.
 $connected = false; // false by default.
 
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
+
 // check that I can connect to the database.
-if ($mysqli>connect_error) {
+if (!$mysqli) {
     $connected = false;
 } else {
 	$connected = true;
@@ -44,7 +48,7 @@ if ($mysqli>connect_error) {
 		
 		<p>Press the button below to begin installing Kotashi Cyro.</p>
 		
-		<a href="install_step1.php" class="btn btn-primary">Install Cyro</a>
+		<a href="step1.php" class="btn btn-primary">Install Cyro</a>
 		';
 	  }
 	  else
@@ -54,7 +58,7 @@ if ($mysqli>connect_error) {
 		
 		<p style="color:red;">Error connecting to database. Check your config!!!</p>
 		
-		<p>I can\'t connect to your database. Please locate the file <b>/includes/db_config.php</b> and fill out the following fields as shown.</p>
+		<p>I can\'t connect to your database. Please locate the file <b>/includes/db_config.php</b> and fill out the following fields as shown. </p>
 		<ul>
 		<li>DB_HOST : Your database host, likely <i>localhost</i>.</li>
 		<li>DB_USER : Your database user.</li>
